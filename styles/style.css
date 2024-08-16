@@ -313,12 +313,12 @@
   filter: grayscale(0.8);
 }
 
-.filter_opacity {
+.filter__opacity {
   filter: opacity(0.8);
 }
 
-.filter_mixed {
-  filter: sepia(80%) opacity(0.5);
+.filter__mixed {
+  filter: invert(1) brightness(100%) saturate(60%) hue-rotate(90deg);
 }
 
 .watermark {
