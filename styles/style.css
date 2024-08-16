@@ -1,0 +1,439 @@
+/* Здесь вы напишете основную часть стилей страницы.
+
+Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
+✦ theme-dark — класс тёмной темы
+✦ theme-light — класс светлой темы
+✦ like-icon — для svg-иконки анимированного сердца
+✦ card__like-button — для кнопки Like рядом с иконкой
+✦ card__icon-button — для кнопки, оборачивающей иконку
+✦ card__icon-button — для кнопки, оборачивающей иконку
+✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
+✦ button__text — для обозначения текстового элемента внутри кнопки
+
+Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
+
+*/
+
+.page {
+  min-inline-size: 320px;
+  min-width: 430px;
+  min-block-size: 100dvb;
+  font-family: var(--font-main), serif;
+  font-variation-settings: "wght" var(--font-weight-main);
+  background-color: var(--background-color);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-image: var(--background-image);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.header {
+  margin: 100px auto;
+  background-color: var(--background-color);
+  max-width: 696px;
+  padding: clamp(7.5rem, 7.1479rem + 1.5023vw, 8.5rem) 0 25px 0;
+  margin-bottom: 100px;
+  border: 2px solid var(--border-color);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+
+  font-family: var(--font-accent);
+  font-weight: 400;
+
+  color: var(--accent-color);
+}
+
+.header__title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.header__main {
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+  text-transform: uppercase;
+}
+
+.header__description {
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+  text-transform: uppercase;
+}
+
+.theme-menu__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.theme-menu__button {
+  border: none;
+  background-color: transparent;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+  padding: 1px 0;
+}
+
+.theme-menu__button:hover {
+  opacity: 0.6;
+}
+
+.theme-menu__button::after {
+  position: absolute;
+  content: "";
+  display: block;
+  align-items: start;
+  width: 0%;
+  height: 2px;
+  background-color: var(--accent-color);
+  transition: width 0.6s ease-in-out;
+  bottom: -2px;
+  left: 0;
+}
+
+.theme-menu__button:disabled {
+  opacity: 0.6;
+  cursor: default;
+  pointer-events: none;
+}
+
+.theme-menu__button:focus-within::after {
+  width: 100%;
+}
+
+.theme-menu__button:disabled::before {
+  content: "▶";
+  position: absolute;
+  animation: select 0.5s infinite ease-in-out alternate;
+}
+
+.theme-menu__button:focus-within {
+  outline: none;
+  opacity: 0.6;
+}
+
+.theme-menu__item {
+  position: relative;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-items: center;
+  gap: 0px;
+  border: 2px solid var(--border-color);
+
+  background-color: var(--background-color);
+  max-width: 696px;
+  color: var(--accent-color);
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card__header {
+  font-variation-settings: "wght" var(--font-weight-header);
+  font-size: 18px;
+  line-height: 21.78px;
+  display: inline-block;
+
+  padding-left: 10px;
+}
+
+.card-img-container {
+  border-top: 2px solid var(--border-color);
+  border-bottom: 2px solid var(--border-color);
+  max-width: 696px;
+  position: relative;
+}
+
+.card__img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  aspect-ratio: 1 / 1;
+  display: block;
+}
+
+.card__content {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+  font-variation-settings: "wght" var(--font-weight-main);
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.card_btns {
+  display: flex;
+  justify-content: end;
+  gap: 6px;
+  padding-right: 25px;
+  padding-bottom: 25px;
+  position: relative;
+}
+
+.button {
+  background-color: transparent;
+  border: 2px solid var(--border-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  position: relative;
+}
+
+.button:focus {
+  box-shadow: 2px 2px var(--border-color);
+  outline: none;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--accent-color);
+  transition: width 0.5s ease-in-out;
+}
+
+.button__text {
+  font-family: var(--font-accent);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 12.6px;
+  color: var(--button-text-color);
+  z-index: 1;
+  position: relative;
+}
+
+.button .button__text {
+  transition: color 0.5s ease-in-out;
+}
+
+.button:hover .button__text {
+  color: var(--background-color);
+}
+
+.button:hover::before {
+  width: 100%;
+}
+
+.button svg {
+  transition: color 0.5s ease-in-out;
+  color: var(--button-text-color);
+}
+
+.card__icon-button {
+  position: relative;
+  display: flex;
+  align-items: end;
+  background-color: transparent;
+  min-height: 38px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  transition: border 0.3s ease;
+}
+
+.card__like-button {
+  width: 169px;
+  min-height: 38px;
+}
+
+.footer {
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+  padding-bottom: 100px;
+}
+
+.footer__button {
+  gap: 8px;
+  padding: 18.5px 21px 18.5px 19px;
+  min-height: 55px;
+  background-color: var(--background-color);
+  color: var(--accent-color);
+  min-width: 375px;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  border: 2px solid var(--accent-color);
+}
+
+.button:hover svg {
+  color: var(--button-text-color);
+  z-index: 1;
+  position: relative;
+}
+
+.filter__contrast {
+  filter: contrast(50%);
+}
+
+.filter__invert {
+  filter: invert(0.7);
+}
+
+.filter__sepia {
+  filter: sepia(80%);
+}
+
+.filter__hue {
+  filter: hue-rotate(-90deg);
+}
+
+.filter__saturate {
+  filter: saturate(158%);
+}
+
+.filter__grayscale {
+  filter: grayscale(0.8);
+}
+
+.filter_opacity {
+  filter: opacity(0.8);
+}
+
+.filter_mixed {
+  filter: sepia(80%) opacity(0.5);
+}
+
+.watermark {
+  text-shadow: 0 0 1px var(--background-color);
+  font-family: var(--font-accent);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  color: var(--accent-color);
+  position: absolute;
+  top: 25px;
+  right: 25px;
+}
+
+
+
+@supports (mix-blend-mode: difference) {
+  .button:hover .button__text {
+    color: var(--button-text-color);
+  }
+
+  .button svg {
+    transition: none;
+    mix-blend-mode: difference;
+  }
+
+  .button .button__text {
+    transition: none;
+  }
+
+  .button__text {
+    mix-blend-mode: difference;
+  }
+}
+
+@supports (
+  (mix-blend-mode: hard-light) and
+    (
+      (text-stroke: 1px var(--background-color)) or
+        (-webkit-text-stroke: 1px var(--background-color))
+    )
+) {
+  .watermark {
+    text-shadow: none;
+    -webkit-text-stroke: 1px var(--background-color);
+    text-stroke: 1px var(--background-color);
+    mix-blend-mode: hard-light;
+  }
+}
+
+.dialog {
+  background: var(--background-color);
+  width: 357px;
+  min-width: 341px;
+  min-height: 191px;
+  border: 2px solid var(--accent-color);
+  padding: 30px;
+}
+
+.dialog_container {
+  color: var(--accent-color);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.dialog_text {
+  line-height: 21px;
+  font-family: var(--font-accent);
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  text-transform: uppercase;
+}
+
+.dialog_btn {
+  width: 100%;
+  min-height: 38px;
+  padding: 12.5px 17px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+dialog::backdrop {
+  opacity: 75%;
+  background: var(--background-color);
+}
+
+@media (width <= 450px) {
+  .dialog {
+    width: 341px;
+    height: 191px;
+  }
+
+  .page {
+    min-width: 375px;
+  }
+
+  .card__header {
+    padding-left: 10px;
+    padding-right: 40px;
+  }
+
+  .footer__button {
+    flex-direction: column;
+    min-width: 306px;
+    max-height: 84px;
+    padding: 15px 0px 15px 0px;
+  }
+
+  .footer__button svg {
+    width: 28px;
+    height: 28px;
+  }
+}
